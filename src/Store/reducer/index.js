@@ -1,9 +1,7 @@
 const initial_state ={
     userInfo:{},
-    product:[],
-    Order:[],
-    Category:"",
-    Cart:[]
+    videoTitle:"",
+    category:""
 
 }
 
@@ -11,29 +9,22 @@ const initial_state ={
 
 const reducer =(state=initial_state,action)=>{
     switch(action.type){
+        
         case "CHANGE_USER":
             return({...state,userInfo:action.payload
             } )
 
-        case "CHANGE_PRODUCT":
+            case "CHANGE_VIDEOTITLE":
             return({...state,
-                product:action.payload
+                videoTitle:action.payload
             })
-
-            case "CHANGE_ORDER":
-            return({...state,
-                Order:action.payload
-            }) 
 
             case "CHANGE_CATEGORY":
             return({...state,
-                Category:action.payload
-            } )
+                category:action.payload
+            }) 
 
-            case "CHANGE_CART":
-            return({...state,
-                Cart:action.payload
-            } )
+
     }
     return state
 

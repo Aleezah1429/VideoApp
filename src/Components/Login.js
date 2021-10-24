@@ -1,19 +1,19 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { View, Text, Button, TextInput,Image,ToastAndroid, Alert } from 'react-native';
 // import database from "@react-native-firebase/database";
-import {changeisstudent} from "../../Store/action/index"
 import {connect } from "react-redux"
 import LinearGradient from 'react-native-linear-gradient';
 import {Signup,Home_Style} from "../../style.js"
 import firestore from '@react-native-firebase/firestore';
+import {changeisuser} from "../Store/action/index"
 
 
 
 
-function Login(props) {
+function UserLogin(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [enterPass, setenterPass] = useState("");
+
 
   
 
@@ -21,20 +21,21 @@ function Login(props) {
     var emailSplit=email.split("@")
     const alreadyExist= firestore().collection("Users").doc(emailSplit[0]).get().then(Snapshot=>{Snapshot.exists})
     if(alreadyExist){
-    firestore().collection("Users").doc(emailSplit[0]).get().then(
+     firestore().collection("Users").doc(emailSplit[0]).get().then(
         data=>{
-          setenterPass(data.data()) 
+          if (data.data()!=undefined && pass==data.data().pass){
+            props.changeisuser(data.data())
+            ToastAndroid.show("Successfully login",ToastAndroid.SHORT)
+            props.navigation.navigate("Categories")
+          }
+          else{
+            ToastAndroid.show("Incorrect email or password",ToastAndroid.LONG)
+          }
         }
-      
       )
-    // console.log(enterPass)
-      if (pass==enterPass.pass){
-          Alert.alert("Successfully login")
-      }
-
+      
+      
     }
-  
-
 }
 
     return(
@@ -72,4 +73,4 @@ function mapStateToProps(state) {
   }
 
  
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin)

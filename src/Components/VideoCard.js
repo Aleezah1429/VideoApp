@@ -33,29 +33,27 @@ import firestore from '@react-native-firebase/firestore';
 function VideoCard(props) {
     return (
 
-        <View style={{ borderColor: "black", borderWidth: 5}}>
-            <Image source={{ uri: props.thumbnail }} style={{ height: '60%', width: '100%', }} />
+        <View style={{ borderColor: "black", borderWidth: 2, paddingBottom: "5%", marginBottom: "10%" }}>
+            <View style={{}}>
+                <Image source={{ uri: props.thumbnail }} style={{ paddingBottom: "60%", marginBottom: "3%" }} />
+            </View>
 
-            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }}>
-                <View style={{ marginTop:'3%'}}>
-                    <Avatar.Image
-                        source={{
-                            uri: props.uri
-                        }}
-                        size={60}
-                    />
+            <View style={{ alignItems: 'center', flexDirection: 'row', marginLeft: "4%", justifyContent: "space-between" }}>
+                <View style={{ alignItems: 'center', flexDirection: 'row' }}>
+                    <View>
+                        <Avatar.Text
+                            labelStyle={{ fontWeight: "bold" }}
+                            label={props.label}
+                            size={60}
+                        />
+                    </View>
+
+                    <View style={{ marginLeft: "5%" }} >
+                        <Text style={All_Videos_Style.TextStyle}>{props.title}</Text>
+                        <Text style={All_Videos_Style.TextStyle2}>{props.views} Views</Text>
+                    </View>
                 </View>
-                <View style={{ marginLeft: '3%', marginTop:'3%' }}>
-                    <Text style={All_Videos_Style.TextStyle}>{props.title}</Text>
-                    <Text style={All_Videos_Style.TextStyle2}>{props.views} Views</Text>
-                </View>
-                <View style={{ marginLeft: '5%', marginTop:'3%' }}>
-                    <Icon name='ellipsis-vertical'
-                        size={22}
-                        color='white'
-                        onPress={() => props.navigation.openDrawer()}
-                    />
-                </View>
+
             </View>
         </View>
 
