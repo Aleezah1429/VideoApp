@@ -25,9 +25,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Home_Style } from "../../style.js"
 import { changeisuser } from "../Store/action/index"
 import { connect } from "react-redux"
-// import Svg, { Path } from 'react-native-svg';
-// import Icon from 'react-native-vector-icons/Ionicons';
-
 const FadeInView = (props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
 
