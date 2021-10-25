@@ -1,6 +1,5 @@
 import React,{ useEffect, useState } from 'react';
 import { View, Text, Button, TextInput,Image,ToastAndroid, Alert } from 'react-native';
-// import database from "@react-native-firebase/database";
 import {connect } from "react-redux"
 import LinearGradient from 'react-native-linear-gradient';
 import {Signup,Home_Style} from "../../style.js"
