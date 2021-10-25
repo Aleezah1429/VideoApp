@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View, Text, Button, TextInput,Alert,ToastAndroid } from 'react-native';
-// import database from "@react-native-firebase/database";
 import { useState } from 'react';
 import {Signup,Home_Style} from "../../style.js"
 
@@ -13,7 +12,6 @@ function UserSignUp(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
    const [alreadyExist,setAlreadyexist] = useState("")
-  // const [pass, setPass] = useState("");
 
   const save_data=()=>{
     var emailSplit=email.split("@")
